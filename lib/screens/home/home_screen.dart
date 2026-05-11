@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import '../espacios/espacios_screen.dart';
+import '../reservas/mis_reservas_screen.dart';
+import '../eventos/eventos_screen.dart';
+import '../socios/beneficios_screen.dart';
+import '../perfil/perfil_screen.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -58,16 +63,30 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Inicio'),
-              onTap: () {},
-            ),
+           ListTile(
+  leading: const Icon(Icons.person),
+  title: const Text('Mi Perfil'),
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PerfilScreen(),
+      ),
+    );
+  },
+),
 
             ListTile(
               leading: const Icon(Icons.event),
               title: const Text('Eventos'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EventosScreen(),
+                  ),
+                );
+              },
             ),
 
             ListTile(
@@ -86,13 +105,27 @@ class HomeScreen extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.book_online),
               title: const Text('Mis Reservas'),
-              onTap: () {},
-            ),
+              onTap: () {
+                Navigator.push(
+                   context,
+                  MaterialPageRoute(
+                    builder: (context) => const MisReservasScreen(),
+        ),
+       );
+    },
+   ),
 
             ListTile(
               leading: const Icon(Icons.star),
               title: const Text('Beneficios Socios'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BeneficiosScreen(),
+                  ),
+                );
+              },
             ),
 
             const Divider(),
@@ -153,25 +186,64 @@ class HomeScreen extends StatelessWidget {
               mainAxisSpacing: 16,
               children: [
 
-                _buildCard(
-                  icon: Icons.event,
-                  title: 'Eventos',
-                ),
+                GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const EventosScreen(),
+      ),
+    );
+  },
+  child: _buildCard(
+    icon: Icons.event,
+    title: 'Eventos',
+  ),
+),
 
-                _buildCard(
-                  icon: Icons.apartment,
-                  title: 'Espacios',
-                ),
+                GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const EspaciosScreen(),
+      ),
+    );
+  },
+  child: _buildCard(
+    icon: Icons.apartment,
+    title: 'Espacios',
+  ),
+),
 
-                _buildCard(
-                  icon: Icons.book_online,
-                  title: 'Reservas',
-                ),
-
-                _buildCard(
-                  icon: Icons.star,
-                  title: 'Socios',
-                ),
+                GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MisReservasScreen(),
+      ),
+    );
+  },
+  child: _buildCard(
+    icon: Icons.book_online,
+    title: 'Reservas',
+  ),
+),
+                GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const BeneficiosScreen(),
+      ),
+    );
+  },
+  child: _buildCard(
+    icon: Icons.star,
+    title: 'Socios',
+  ),
+),
               ],
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../reservas/reservar_screen.dart';
 
 class DetalleEspacioScreen extends StatelessWidget {
   final String nombre;
@@ -116,7 +117,17 @@ class DetalleEspacioScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReservarScreen(
+                        nombreEspacio: nombre,
+                        precio: precio,
+                      ),
+                    ),
+                  );
+                },
                 child: const Text(
                   'Reservar este espacio',
                   style: TextStyle(
