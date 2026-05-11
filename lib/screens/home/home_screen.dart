@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../espacios/espacios_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -72,7 +73,14 @@ class HomeScreen extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.apartment),
               title: const Text('Espacios'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EspaciosScreen(),
+                    ),
+                );
+              },
             ),
 
             ListTile(
