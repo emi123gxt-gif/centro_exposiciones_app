@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'editar_perfil_screen.dart';
 
 class PerfilScreen extends StatelessWidget {
   const PerfilScreen({super.key});
@@ -101,7 +102,14 @@ class PerfilScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditarPerfilScreen(),
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.edit),
                 label: const Text(
                   'Editar perfil',

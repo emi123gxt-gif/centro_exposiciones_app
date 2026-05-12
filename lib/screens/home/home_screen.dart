@@ -4,6 +4,8 @@ import '../reservas/mis_reservas_screen.dart';
 import '../eventos/eventos_screen.dart';
 import '../socios/beneficios_screen.dart';
 import '../perfil/perfil_screen.dart';
+import '../auth/login_screen.dart';
+import '../info/info_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -62,7 +64,18 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-
+           ListTile(
+  leading: const Icon(Icons.info_outline),
+  title: const Text('Información'),
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const InfoScreen(),
+      ),
+    );
+  },
+),
            ListTile(
   leading: const Icon(Icons.person),
   title: const Text('Mi Perfil'),
@@ -133,7 +146,14 @@ class HomeScreen extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Cerrar sesión'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -146,24 +166,112 @@ class HomeScreen extends StatelessWidget {
           children: [
 
             Container(
-              width: double.infinity,
-              height: 180,
-              decoration: BoxDecoration(
-                color: azulOscuro,
-                borderRadius: BorderRadius.circular(24),
-              ),
-              child: const Center(
-                child: Text(
-                  'Bienvenido al\nCentro de Exposiciones',
-                  textAlign: TextAlign.center,
+  width: double.infinity,
+  padding: const EdgeInsets.all(28),
+  decoration: BoxDecoration(
+    gradient: const LinearGradient(
+      colors: [
+        Color(0xFF0B234A),
+        Color(0xFF163B73),
+      ],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    ),
+    borderRadius: BorderRadius.circular(28),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withOpacity(0.15),
+        blurRadius: 14,
+        offset: const Offset(0, 8),
+      ),
+    ],
+  ),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start,
+              children: const [
+
+                Text(
+                  'Bienvenido 👋',
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 18,
+                  ),
+                ),
+
+                SizedBox(height: 8),
+
+                Text(
+                  'Centro de\nExposiciones',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 28,
+                    fontSize: 32,
                     fontWeight: FontWeight.bold,
+                    height: 1.2,
                   ),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            width: 90,
+            height: 90,
+            decoration: BoxDecoration(
+              color: Colors.white24,
+              borderRadius: BorderRadius.circular(22),
+            ),
+            child: const Icon(
+              Icons.business,
+              color: Colors.white,
+              size: 50,
+            ),
+          ),
+        ],
+      ),
+
+      const SizedBox(height: 24),
+
+      Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 12,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white24,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: const Row(
+          children: [
+            Icon(
+              Icons.event_available,
+              color: Colors.white,
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                'Reserva espacios y participa en eventos exclusivos.',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
                 ),
               ),
             ),
+          ],
+        ),
+      ),
+    ],
+  ),
+),
 
             const SizedBox(height: 30),
 

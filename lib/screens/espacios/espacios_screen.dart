@@ -66,109 +66,133 @@ class EspaciosScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: ListView.builder(
+      body: Padding(
         padding: const EdgeInsets.all(20),
-        itemCount: espacios.length,
-        itemBuilder: (context, index) {
-          final espacio = espacios[index];
-
-          return Container(
-            margin: const EdgeInsets.only(bottom: 18),
-            padding: const EdgeInsets.all(18),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(22),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.08),
-                  blurRadius: 12,
-                  offset: const Offset(0, 6),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Buscar espacios...',
+                prefixIcon: const Icon(Icons.search),
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide.none,
                 ),
-              ],
+              ),
             ),
-            child: Row(
-              children: [
-                Container(
-                  width: 70,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: azulOscuro.withOpacity(0.10),
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-                  child: Icon(
-                    obtenerIcono(espacio['icono']!),
-                    color: rojoPrincipal,
-                    size: 38,
-                  ),
-                ),
 
-                const SizedBox(width: 16),
+            const SizedBox(height: 20),
 
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        espacio['nombre']!,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: azulOscuro,
+            Expanded(
+              child: ListView.builder(
+                itemCount: espacios.length,
+                itemBuilder: (context, index) {
+                  final espacio = espacios[index];
+
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 18),
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(22),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: 12,
+                          offset: const Offset(0, 6),
                         ),
-                      ),
-
-                      const SizedBox(height: 6),
-
-                      Text(
-                        'Tipo: ${espacio['tipo']}',
-                        style: const TextStyle(color: Colors.black54),
-                      ),
-
-                      Text(
-                        'Capacidad: ${espacio['capacidad']}',
-                        style: const TextStyle(color: Colors.black54),
-                      ),
-
-                      Text(
-                        'Precio: ${espacio['precio']}',
-                        style: const TextStyle(color: Colors.black54),
-                      ),
-
-                      const SizedBox(height: 12),
-
-                      SizedBox(
-                        height: 38,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: rojoPrincipal,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: azulOscuro.withOpacity(0.10),
+                            borderRadius: BorderRadius.circular(18),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetalleEspacioScreen(
-                                  nombre: espacio['nombre']!,
-                                  tipo: espacio['tipo']!,
-                                  capacidad: espacio['capacidad']!,
-                                  precio: espacio['precio']!,
+                          child: Icon(
+                            obtenerIcono(espacio['icono']!),
+                            color: rojoPrincipal,
+                            size: 38,
+                          ),
+                        ),
+
+                        const SizedBox(width: 16),
+
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                espacio['nombre']!,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: azulOscuro,
                                 ),
                               ),
-                            );
-                          },
-                          child: const Text('Reservar'),
+
+                              const SizedBox(height: 6),
+
+                              Text(
+                                'Tipo: ${espacio['tipo']}',
+                                style: const TextStyle(color: Colors.black54),
+                              ),
+
+                              Text(
+                                'Capacidad: ${espacio['capacidad']}',
+                                style: const TextStyle(color: Colors.black54),
+                              ),
+
+                              Text(
+                                'Precio: ${espacio['precio']}',
+                                style: const TextStyle(color: Colors.black54),
+                              ),
+
+                              const SizedBox(height: 12),
+
+                              SizedBox(
+                                height: 38,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: rojoPrincipal,
+                                    foregroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetalleEspacioScreen(
+                                          nombre: espacio['nombre']!,
+                                          tipo: espacio['tipo']!,
+                                          capacidad: espacio['capacidad']!,
+                                          precio: espacio['precio']!,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text('Reservar'),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }
