@@ -6,6 +6,7 @@ import '../socios/beneficios_screen.dart';
 import '../perfil/perfil_screen.dart';
 import '../auth/login_screen.dart';
 import '../info/info_screen.dart';
+import '../notificaciones/notificaciones_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -28,7 +29,14 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NotificacionesScreen(),
+                ),
+              );
+            },
             icon: const Icon(Icons.notifications, color: Colors.white),
           ),
         ],

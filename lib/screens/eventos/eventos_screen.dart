@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'detalle_evento_screen.dart';
 
 class EventosScreen extends StatelessWidget {
   const EventosScreen({super.key});
@@ -141,7 +142,18 @@ class EventosScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetalleEventoScreen(
+                            nombre: evento['titulo']!,
+                            fecha: evento['fecha']!,
+                            lugar: evento['lugar']!,
+                          ),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Ver detalles',
                       style: TextStyle(
