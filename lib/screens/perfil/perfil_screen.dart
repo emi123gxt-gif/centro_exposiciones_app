@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'editar_perfil_screen.dart';
+import '../socios/tarjeta_socio_screen.dart';
 
 class PerfilScreen extends StatelessWidget {
   const PerfilScreen({super.key});
@@ -15,10 +16,7 @@ class PerfilScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: azulOscuro,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text(
-          'Mi Perfil',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: const Text('Mi Perfil', style: TextStyle(color: Colors.white)),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(22),
@@ -36,11 +34,7 @@ class PerfilScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: 45,
                     backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.person,
-                      size: 55,
-                      color: azulOscuro,
-                    ),
+                    child: Icon(Icons.person, size: 55, color: azulOscuro),
                   ),
                   SizedBox(height: 16),
                   Text(
@@ -53,11 +47,8 @@ class PerfilScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 6),
                   Text(
-                    'Público general',
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 16,
-                    ),
+                    'Socio Premium',
+                    style: TextStyle(color: Colors.white70, fontSize: 16),
                   ),
                 ],
               ),
@@ -80,7 +71,7 @@ class PerfilScreen extends StatelessWidget {
             _infoCard(
               icon: Icons.badge_outlined,
               title: 'Tipo de usuario',
-              value: 'Público general',
+              value: 'Socio Premium',
             ),
 
             _infoCard(
@@ -113,10 +104,36 @@ class PerfilScreen extends StatelessWidget {
                 icon: const Icon(Icons.edit),
                 label: const Text(
                   'Editar perfil',
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 16),
+
+            SizedBox(
+              width: double.infinity,
+              height: 52,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: azulOscuro,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
                   ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TarjetaSocioScreen(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.badge),
+                label: const Text(
+                  'Ver tarjeta virtual',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -139,10 +156,7 @@ class PerfilScreen extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.07),
-            blurRadius: 10,
-          ),
+          BoxShadow(color: Colors.black.withOpacity(0.07), blurRadius: 10),
         ],
       ),
       child: Row(
@@ -154,10 +168,7 @@ class PerfilScreen extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  color: Colors.black54,
-                  fontSize: 14,
-                ),
+                style: const TextStyle(color: Colors.black54, fontSize: 14),
               ),
               const SizedBox(height: 4),
               Text(
